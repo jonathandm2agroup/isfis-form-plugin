@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "create-block/isfis-text-input",
+	"version": "0.1.0",
+	"title": "Isfis Text Input",
+	"category": "formulario-isfis",
+	"icon": "/logo.svg",
+	"description": "Crea un input de tipo texto",
+	"attributes": {
+		"textName": {
+			"type": "string"
+		},
+		"placeholder": {
+			"type": "string"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "isfis-text-input",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
