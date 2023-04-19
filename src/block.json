@@ -1,32 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "create-block/isfis-url",
+	"name": "create-block/isfis-body-form",
 	"version": "0.1.0",
-	"title": "Isfis Enlace",
+	"title": "Isfis Cuerpo de formulario",
 	"category": "formulario-isfis",
 	"icon": "/logo.svg",
-	"description": "Crea un input de tipo URL",
-	"attributes": {
-		"textName": {
-			"type": "string"
-		},
-		"placeholder": {
-			"type": "string"
-		},
-		"required": {
-			"type": "boolean",
-			"default": false
-		},
-		"maxlength": {
-			"type": "number",
-			"default": 150
-		}
-	},
+	"description": "Crea un cuerpo de formulario.",
 	"supports": {
 		"html": false
 	},
-	"textdomain": "isfis-url",
+	"textdomain": "isfis-body-form",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
