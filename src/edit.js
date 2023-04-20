@@ -6,7 +6,8 @@ import './style.scss';
 
 export default function Edit(props) {
 	const { attributes, setAttributes } = props;
-	let {textName, placeholder, required, valueInput} = attributes;
+	let {textName, placeholder, required} = attributes;
+	const [ isRequired, setIsRequired ] = useState( false );
 
 	const onChangeNameTextInput = (newName) => {
 		setAttributes({textName: newName});
@@ -14,6 +15,11 @@ export default function Edit(props) {
 
 	const onChangePlaceHolder = (newPlaceholder) => {
 		setAttributes({placeholder: newPlaceholder})
+	}
+
+	const onChangeRequirer = (isRequired) => {
+		setIsRequired(( isRequired ) => ! isRequired);
+		setAttributes({required: isRequired});
 	}
 	return (
 		<p { ...useBlockProps() }>
@@ -32,7 +38,7 @@ export default function Edit(props) {
 					<ToggleControl 
 						label='Campo requerido'
 						help="Añade una restriccion al campo, es decir el campo no puede estar vacio"
-						onChange={(value) => setAttributes({required:value})}
+						onChange={(value) => setAttributes({required: value})}
 						checked={required}
 					/>
 				</PanelBody>
@@ -40,8 +46,8 @@ export default function Edit(props) {
 			<div className='flex flex-col'>
 				<label className='mx-2 font-Poppins text-lg text-MidnightB'>{textName !== undefined ? textName: 'Label'}:</label>
 				{required ? 
-					<input name={textName} value={valueInput} className='mx-2 w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='text' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'} required disabled /> 
-				: <input name={textName} value={valueInput} className='mx-2 w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='text' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'} disabled/>}
+					<input name={textName} className='mx-2 w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'} required disabled /> 
+				: <input name={textName} className='mx-2 w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled/>}
 			</div>
 		</p>
 	);
