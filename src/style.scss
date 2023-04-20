@@ -593,22 +593,9 @@ video {
   border-color: rgb(220 38 38 / var(--tw-border-opacity));
 }
 
-.\!bg-MidnightB{
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(8 37 88 / var(--tw-bg-opacity)) !important;
-}
-
 .bg-MidnightB{
   --tw-bg-opacity: 1;
   background-color: rgb(8 37 88 / var(--tw-bg-opacity));
-}
-
-.bg-emerald-400\/50{
-  background-color: rgb(52 211 153 / 0.5);
-}
-
-.bg-emerald-300\/50{
-  background-color: rgb(110 231 183 / 0.5);
 }
 
 .bg-green-400{
@@ -626,14 +613,14 @@ video {
   padding-right: 0.5rem;
 }
 
-.py-3{
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 .px-3{
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .py-4{
@@ -659,16 +646,16 @@ video {
   line-height: 1.75rem;
 }
 
+.font-bold{
+  font-weight: 700;
+}
+
 .font-normal{
   font-weight: 400;
 }
 
 .font-semibold{
   font-weight: 600;
-}
-
-.font-bold{
-  font-weight: 700;
 }
 
 .text-MidnightB{
@@ -679,10 +666,6 @@ video {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.filter{
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .placeholder\:italic::-moz-placeholder{
