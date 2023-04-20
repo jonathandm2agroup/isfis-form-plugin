@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "create-block/isfis-email-input",
+	"name": "create-block/isfis-textarea",
 	"version": "0.1.0",
-	"title": "Isfis Email Input",
+	"title": "Isfis Textarea",
 	"category": "formulario-isfis",
 	"icon": "/logo.svg",
 	"description": "Crea un input de tipo email",
@@ -17,12 +17,16 @@
 		"required": {
 			"type": "boolean",
 			"default": false
+		},
+		"maxlength": {
+			"type": "number",
+			"default": 150
 		}
 	},
 	"supports": {
 		"html": false
 	},
-	"textdomain": "isfis-email-input",
+	"textdomain": "isfis-textarea",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

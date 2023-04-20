@@ -567,6 +567,10 @@ video {
   resize: vertical;
 }
 
+.resize{
+  resize: both;
+}
+
 .flex-col{
   flex-direction: column;
 }

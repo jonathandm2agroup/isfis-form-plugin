@@ -40,6 +40,10 @@ registerBlockType( metadata.name, {
 		required: {
 			type: "boolean",
 			default: false
+		},
+		maxlength: {
+			type: "number",
+			default: 150
 		}
 	},
 	icon: <img src={logo}/>
