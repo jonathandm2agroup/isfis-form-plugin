@@ -59,6 +59,9 @@ registerBlockType( metadata.name, {
 		},
 		redirectLink: {
 			type: "string"
+		},
+		terminosLink: {
+			type: "string"
 		}
 	},
 	icon: <img src={logo}/>,

@@ -7,7 +7,7 @@ import './style.scss';
 
 export default function Edit(props) {
 	const { attributes, setAttributes } = props;
-	let {textName, placeholder, required, maxlength} = attributes;
+	let {textName, placeholder, required, maxlength, valueInput} = attributes;
 	
 
 	const onChangeNameTextInput = (newName) => {
@@ -55,8 +55,8 @@ export default function Edit(props) {
 			<div className='flex flex-col'>
 				<label className='mx-2 font-Poppins text-lg text-MidnightB'>{textName !== undefined ? textName: 'Label'}:</label>
 				{required ? 
-					<textarea maxLength={maxlength} name={textName} className='mx-2 px-2 py-3 resize w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled required /> 
-				: <textarea maxLength={maxlength} name={textName} className='mx-2 px-2 py-3 resize w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled />}
+					<textarea maxLength={maxlength} value={valueInput}  name={textName} className='mx-2 px-2 py-3 resize w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled required /> 
+				: <textarea maxLength={maxlength} value={valueInput}  name={textName} className='mx-2 px-2 py-3 resize w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled />}
 			</div>
 		</p>
 	);

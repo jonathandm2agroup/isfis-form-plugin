@@ -537,6 +537,11 @@ video {
   margin-right: auto;
 }
 
+.my-2{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .my-4{
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -571,8 +576,20 @@ video {
   resize: both;
 }
 
+.flex-row{
+  flex-direction: row;
+}
+
 .flex-col{
   flex-direction: column;
+}
+
+.items-center{
+  align-items: center;
+}
+
+.gap-1{
+  gap: 0.25rem;
 }
 
 .gap-3{
@@ -585,6 +602,11 @@ video {
 
 .border{
   border-width: 1px;
+}
+
+.border-MidnightB{
+  --tw-border-opacity: 1;
+  border-color: rgb(8 37 88 / var(--tw-border-opacity));
 }
 
 .border-emerald-600{
@@ -610,6 +632,11 @@ video {
 .bg-red-400{
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+.px-0{
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .px-2{
@@ -662,14 +689,28 @@ video {
   font-weight: 600;
 }
 
+.\!text-black{
+  --tw-text-opacity: 1 !important;
+  color: rgb(0 0 0 / var(--tw-text-opacity)) !important;
+}
+
 .text-MidnightB{
   --tw-text-opacity: 1;
   color: rgb(8 37 88 / var(--tw-text-opacity));
 }
 
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.\!underline{
+  text-decoration-line: underline !important;
 }
 
 .placeholder\:italic::-moz-placeholder{
@@ -710,9 +751,18 @@ video {
   color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
+.hover\:cursor-pointer:hover{
+  cursor: pointer;
+}
+
 .hover\:bg-DeepB:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(4 84 187 / var(--tw-bg-opacity));
+}
+
+.hover\:text-DeepB:hover{
+  --tw-text-opacity: 1;
+  color: rgb(4 84 187 / var(--tw-text-opacity));
 }
 
 .focus\:border-MidnightB:focus{
@@ -766,14 +816,13 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-@media (min-width: 240px){
-  .phone\:flex-row{
+@media (min-width: 768px){
+  .md\:flex-row{
     flex-direction: row;
   }
-}
 
-@media (min-width: 776px){
-  .desktop\:flex-col{
-    flex-direction: column;
+  .md\:px-3{
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }

@@ -40,6 +40,10 @@ registerBlockType( metadata.name, {
 		required: {
 			type: "boolean",
 			default: false
+		},
+		valueInput: {
+			type: "string",
+			default: ''
 		}
 	},
 	icon: <img src={logo}/>

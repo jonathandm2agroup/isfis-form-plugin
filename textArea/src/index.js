@@ -44,7 +44,12 @@ registerBlockType( metadata.name, {
 		maxlength: {
 			type: "number",
 			default: 150
+		},
+		valueInput: {
+			type: "string",
+			default: ''
 		}
+
 	},
 	icon: <img src={logo}/>
 } );

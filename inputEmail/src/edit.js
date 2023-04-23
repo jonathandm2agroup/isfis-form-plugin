@@ -6,7 +6,7 @@ import './style.scss';
 
 export default function Edit(props) {
 	const { attributes, setAttributes } = props;
-	let {textName, placeholder, required} = attributes;
+	let {textName, placeholder, required, valueInput} = attributes;
 	const [ isRequired, setIsRequired ] = useState( false );
 
 	const onChangeNameTextInput = (newName) => {
@@ -46,8 +46,8 @@ export default function Edit(props) {
 			<div className='flex flex-col'>
 				<label className='mx-2 font-Poppins text-lg text-MidnightB'>{textName !== undefined ? textName: 'Label'}:</label>
 				{required ? 
-					<input name={textName} className='mx-2 w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'} required disabled /> 
-				: <input name={textName} className='mx-2 w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled/>}
+					<input name={textName} value={valueInput}  className='mx-2 w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'} required disabled /> 
+				: <input name={textName} value={valueInput} className='mx-2 w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled/>}
 			</div>
 		</p>
 	);

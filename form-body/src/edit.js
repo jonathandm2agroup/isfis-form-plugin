@@ -7,7 +7,7 @@ import './style.scss';
 
 export default function Edit(props) {
 	const { attributes, setAttributes } = props;
-	let {textName, hasExternalLink, externalLink, parentTaxonomy, hasChildTaxonomy, selectChildTaxonomy, redirect, redirectLink} = attributes;;
+	let {textName, hasExternalLink, externalLink, parentTaxonomy, terminosLink ,hasChildTaxonomy, selectChildTaxonomy, redirect, redirectLink} = attributes;;
 	const [parentCategory, setParentCategory] = useState([]);
 	const [childCategory, setChildCategory] = useState([]);
 	const [checkExternalLink, setCheckExternalLink] = useState(hasExternalLink)
@@ -129,11 +129,22 @@ export default function Edit(props) {
 							onChange={(pageURL) => {setAttributes({redirectLink: pageURL})}}
 						/>
 					)}
+					<TextControl 
+						label="URL de la página de terminos y condiciones"
+						value={terminosLink}
+						onChange={(urlTerm) => {setAttributes({terminosLink: urlTerm})}}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<form className='flex flex-col font-Poppins mx-3 my-4'>
 				<h3 className='text-3xl text-MidnightB text-center'>{textName}</h3>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS}/>
+				<div className='flex flex-row items-center px-3 my-2'>
+					<input type="checkbox" className='rounded-md border border-MidnightB' disabled/>
+					<div className='text-black'>
+						Acepto los <a href={terminosLink || '#'}>terminos y condiciones</a>
+					</div>
+				</div>
 				<input className='mx-auto rounded-md !bg-MidnightB hover:bg-DeepB text-white px-2 py-3 text-lg disabled:bg-MidnightB disabled:text-white' value={__('Enviar')} type='submit' disabled/>
 			</form>
 		</p>
