@@ -1,28 +1,16 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "create-block/isfis-input-file",
+	"name": "create-block/isfis-body-form",
 	"version": "0.1.0",
-	"title": "Isfis Campo de Archivo",
+	"title": "Isfis Cuerpo de formulario",
 	"category": "formulario-isfis",
 	"icon": "/logo.svg",
-	"description": "Crea un campo de tipo archivo.",
-	"attributes": {
-		"textName": {
-			"type": "string"
-		},
-		"placeholder": {
-			"type": "string"
-		},
-		"required": {
-			"type": "boolean",
-			"default": false
-		}
-	},
+	"description": "Crea un cuerpo de formulario.",
 	"supports": {
 		"html": false
 	},
-	"textdomain": "isfis-input-file",
+	"textdomain": "isfis-body-form",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
