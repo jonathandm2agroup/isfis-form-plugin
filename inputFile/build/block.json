@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "create-block/isfis-input-file",
+  "version": "0.1.0",
+  "title": "Isfis Campo de Archivo",
+  "category": "formulario-isfis",
+  "icon": "/logo.svg",
+  "description": "Crea un campo de tipo archivo.",
+  "attributes": {
+    "textName": {
+      "type": "string"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "isfis-input-file",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}
