@@ -1,7 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import {ToggleControl, TextControl,Panel, PanelBody} from '@wordpress/components';
-import { __experimentalNumberControl as NumberControl } from '@wordpress/components';
+import {ToggleControl, TextControl,Panel, PanelBody, RangeControl} from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import './style.scss';
 
@@ -42,11 +41,11 @@ export default function Edit(props) {
 						onChange={(value) => setAttributes({required: value})}
 						checked={required}
 					/>
-					<NumberControl
+					<RangeControl
 						label='Longitud de caracteres'
 						value={maxlength}
 						min={0}
-						max={500}
+						max={800}
 						onChange={onChangeMaxCaracter}
 						required
 					/>

@@ -1,152 +1,62 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
-import {ToggleControl, TextControl,Panel, PanelBody, SelectControl, CheckboxControl } from '@wordpress/components';
-import apiFetch from '@wordpress/api-fetch';
-import { useState, useEffect } from '@wordpress/element';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import {ToggleControl, TextControl,Panel, PanelBody, RangeControl} from '@wordpress/components';
+import { useState } from '@wordpress/element';
 import './style.scss';
 
 export default function Edit(props) {
 	const { attributes, setAttributes } = props;
-	let {textName, hasExternalLink, externalLink, parentTaxonomy, terminosLink ,hasChildTaxonomy, selectChildTaxonomy, redirect, redirectLink} = attributes;;
-	const [parentCategory, setParentCategory] = useState([]);
-	const [childCategory, setChildCategory] = useState([]);
-	const [checkExternalLink, setCheckExternalLink] = useState(hasExternalLink)
+	let {textName, placeholder, required, maxlength, valueInput} = attributes;
+	
 
-	let optionsParent = []
-	let optionsChild = []
-	
-	useEffect(() => {
-		apiFetch({ path: "/wp/v2/tipos_formulario" }).then((categoryForm) => {
-			if(categoryForm.parent !== 0){
-				const parentCategories = categoryForm.filter( category => category.parent === 0 );
-				setParentCategory(parentCategories)
-				let childCategory = categoryForm.filter( category => category.parent > 0 );
-				let formatedChildItems = [];
-				childCategory.forEach(item => {
-					return formatedChildItems = [[{parent:item.parent}, [{label: item.name, value: item.id}]], ...formatedChildItems]
-				})
-				setChildCategory(formatedChildItems)
-			}
-		});
-	}, []);
-	
 	const onChangeNameTextInput = (newName) => {
 		setAttributes({textName: newName});
 	}
-	const onChangeExternalLink = (newLink) => {
-		setAttributes({externalLink: newLink});
-	}
-	const onChangeFormType = (formType) => {
-		setAttributes({parentTaxonomy: Number(formType)})
+
+	const onChangePlaceHolder = (newPlaceholder) => {
+		setAttributes({placeholder: newPlaceholder})
 	}
 
-	const formTypeHasChild = (formType) => {
-		let hasChild = [];
-		if(childCategory.length > 0){
-			hasChild = childCategory.map(item => {
-				if(item[0]['parent'] === formType){
-					return item[1][0]
-				}else{
-					return undefined
-				}
-			})
-			return hasChild.filter(item => item !== undefined);
-		}else{
-			return hasChild;
-		}
+	const onChangeMaxCaracter = (maxCaracter) => {
+		setAttributes({maxlength: maxCaracter})
 	}
 
-	const onChangeFormChildType = (childType) => {
-		setAttributes({hasChildTaxonomy: true, selectChildTaxonomy: Number(childType)})
-	}
-	if(parentCategory.length > 0){
-		parentCategory.forEach(item => 
-			{
-			return optionsParent = [{label:item.name, value:item.id}, ...optionsParent]
-		});
-		optionsParent.unshift({label: '<Selecciona un valor>', value: 0})
-	}
-	
-	const ALLOWED_BLOCKS = ['create-block/isfis-input-file' , 'create-block/isfis-text-input', 'create-block/isfis-email-input', 'create-block/isfis-textarea', 'core/columns']
-	
-	if(childCategory.length > 0){
-		optionsChild = formTypeHasChild(parentTaxonomy);
-		optionsChild.unshift({label: '<Selecciona un valor>', value: 0})
-	}
 	return (
 		<p { ...useBlockProps() }>
 			<InspectorControls>
-				<PanelBody title='Configuraciones del formulario'>
+				<PanelBody title='Configuraciones del campo de texto'>
 					<TextControl
-						label="Titulo del formulario"
+						label="Nombre del campo"
 						value={textName}
 						onChange={onChangeNameTextInput}
 					/>
-					<SelectControl
-						label={__('Este formulario pertenece a:')}
-						value={parentTaxonomy}
-						options={parentCategory.length > 0 ? optionsParent: [{label: 'Cargando...', value: 'loading.'}]}
-						onChange={onChangeFormType}
+					<TextControl
+						label="Placeholder"
+						value={placeholder}
+						onChange={onChangePlaceHolder}
 					/>
-					{
-						parentTaxonomy !== undefined && parentTaxonomy > 0 ?
-							formTypeHasChild(parentTaxonomy).length > 0 ?
-								<>
-									<SelectControl 
-										label={__('Selecciona la subcategoria que pertenece')}
-										value={selectChildTaxonomy}
-										options={optionsChild}
-										onChange={onChangeFormChildType}
-									/>
-								</>
-							:setAttributes({hasChildTaxonomy: false, selectChildTaxonomy: 0})
-						: null
-					}
-					<CheckboxControl 
-						label="Envio de datos a un link externo"
-						help= "Enviar los datos a otro sitio mediante una API"
-						checked={checkExternalLink}
-						onChange={setCheckExternalLink}
+					<ToggleControl 
+						label='Campo requerido'
+						help="Añade una restriccion al campo, es decir el campo no puede estar vacio"
+						onChange={(value) => setAttributes({required: value})}
+						checked={required}
 					/>
-					{
-						checkExternalLink && (
-							<TextControl
-								label="Endpoint donde se enviarán los datos"
-								value={externalLink}
-								onChange={onChangeExternalLink}
-							/>
-						)
-					}
-					<ToggleControl
-						label="Redigir a una página de agradecimiento"
-						checked={redirect}
-						onChange={(isRedirect) => setAttributes({redirect: isRedirect})}
-					/>
-					{redirect && (
-						<TextControl
-							label="URL de la página a redirigir"
-							value={redirectLink}
-							onChange={(pageURL) => {setAttributes({redirectLink: pageURL})}}
-						/>
-					)}
-					<TextControl 
-						label="URL de la página de terminos y condiciones"
-						value={terminosLink}
-						onChange={(urlTerm) => {setAttributes({terminosLink: urlTerm})}}
+					<RangeControl
+						label='Longitud de caracteres'
+						value={maxlength}
+						min={0}
+						max={800}
+						onChange={onChangeMaxCaracter}
+						required
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<form className='flex flex-col font-Poppins mx-3 my-4'>
-				<h3 className='text-3xl text-MidnightB text-center'>{textName}</h3>
-				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS}/>
-				<div className='flex flex-row items-center px-3 my-2'>
-					<input type="checkbox" className='rounded-md border border-MidnightB' disabled/>
-					<div className='text-black'>
-						Acepto los <a href={terminosLink || '#'}>terminos y condiciones</a>
-					</div>
-				</div>
-				<input className='mx-auto rounded-md !bg-MidnightB hover:bg-DeepB text-white px-2 py-3 text-lg disabled:bg-MidnightB disabled:text-white' value={__('Enviar')} type='submit' disabled/>
-			</form>
+			<div className='flex flex-col'>
+				<label className='mx-2 font-Poppins text-lg text-MidnightB'>{textName !== undefined ? textName: 'Label'}:</label>
+				{required ? 
+					<textarea maxLength={maxlength} value={valueInput}  name={textName} className='mx-2 px-2 py-3 resize w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled required /> 
+				: <textarea maxLength={maxlength} value={valueInput}  name={textName} className='mx-2 px-2 py-3 resize w-full font-Poppins font-normal rounded-md placeholder:italic placeholder:text-slate-400 focus:outline-none focus:border-MidnightB focus:ring-MidnightB focus:ring-1' type='email' placeholder={placeholder !== undefined ? placeholder: 'Placeholder'}  disabled />}
+			</div>
 		</p>
 	);
 }

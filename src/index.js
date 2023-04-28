@@ -20,7 +20,6 @@ import './style.scss';
 import Edit from './edit';
 import metadata from './block.json';
 import logo from '../src/logo.svg'
-import { InnerBlocks } from '@wordpress/block-editor';
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -35,37 +34,22 @@ registerBlockType( metadata.name, {
 		textName: {
 			type: "string"
 		},
-		parentTaxonomy: {
-			type: "number",
-			default: 0
+		placeholder: {
+			type: "string"
 		},
-		hasChildTaxonomy: {
+		required: {
 			type: "boolean",
 			default: false
 		},
-		selectChildTaxonomy: {
+		maxlength: {
 			type: "number",
+			default: 150
 		},
-		hasExternalLink: {
-			type: "boolean",
-			default: false
-		},
-		externalLink:{
-			type: "string"
-		},
-		redirect: {
-			type: "boolean",
-			default:false
-		},
-		redirectLink: {
-			type: "string"
-		},
-		terminosLink: {
-			type: "string"
+		valueInput: {
+			type: "string",
+			default: ''
 		}
+
 	},
-	icon: <img src={logo}/>,
-	save: () => {
-		return <InnerBlocks.Content />;
-	}
+	icon: <img src={logo}/>
 } );

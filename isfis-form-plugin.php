@@ -21,11 +21,11 @@
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function create_block_isfis_form_plugin_block_init() {
-	register_block_type( __DIR__ . '/build' );
+	/* register_block_type( __DIR__ . '/build' ); */
     register_block_type( __DIR__ . '/inputText/build' );
     register_block_type( __DIR__ . '/inputEmail/build' );
     register_block_type( __DIR__ . '/textArea/build' );
-    /* register_block_type( __DIR__ . '/form-body/build' ); */
+    register_block_type( __DIR__ . '/form-body/build' );
     register_block_type( __DIR__ . '/inputFile/build' );
 }
 add_action( 'init', 'create_block_isfis_form_plugin_block_init' );

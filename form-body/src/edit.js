@@ -67,7 +67,7 @@ export default function Edit(props) {
 		optionsParent.unshift({label: '<Selecciona un valor>', value: 0})
 	}
 	
-	const ALLOWED_BLOCKS = ['create-block/isfis-text-input', 'create-block/isfis-email-input', 'create-block/isfis-textarea', 'core/columns']
+	const ALLOWED_BLOCKS = ['create-block/isfis-input-file' , 'create-block/isfis-text-input', 'create-block/isfis-email-input', 'create-block/isfis-textarea', 'core/columns']
 	
 	if(childCategory.length > 0){
 		optionsChild = formTypeHasChild(parentTaxonomy);
